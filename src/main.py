@@ -1,7 +1,8 @@
 import pygame, os, time, ballMove, bot
+
 ScreenW = 480
-difficulty = 0
 ScreenH = 808
+difficulty = 0
 DeskWidth = 20
 DeskLen = 100
 XSpeed = 2
@@ -22,8 +23,8 @@ goal = 0
 
 pygame.init()
 
-f1 = pygame.font.Font('HomeVideo-Regular.otf', 48)
-screen = pygame.display.set_mode((ScreenW, ScreenH))   #480, 808
+f1 = pygame.font.Font('fonts/HomeVideo-Regular.otf', 48)
+screen = pygame.display.set_mode((ScreenW, ScreenH))
 clock = pygame.time.Clock()
 
 def render(Ball, Bot, Player, DeskWidth,DeskLen  ):
@@ -75,7 +76,9 @@ while True:
             turn =1
         dt = time.time()
         while time.time()-dt <3:
-            print((time.time()-dt)//1)
+            screen.fill("black")
+            Time = f1.render(str(int((time.time()-dt)//1)), True, (180, 180, 180))
+            screen.blit(Time, (ScreenW/2-20, ScreenH/2-20))
+            pygame.display.flip()
     render(Ball, Bot, Player, DeskWidth, DeskLen)
     clock.tick(60)
-    print(XSpeed)
